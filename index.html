@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Botiax Travel - Tu próximo destino, tu mejor historia</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="botiaxtravelfavicon.ico">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandDark: '#16163A',
+            brandGold: '#EC9D04',
+            brandGoldHover: '#d48c03',
+            brandLightSky: '#f0f4f9',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Estilos personalizados para slider y animaciones */
+    .carousel-container {
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+    }
+    .carousel-item {
+      scroll-snap-align: start;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+  <!-- HEADER / NAVBAR -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- LOGO -->
+      <div class="flex items-center space-x-3">
+        <img src="botiax travel logo 2.png" alt="Botiax Travel Logo" class="h-14 w-auto object-contain" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60?text=Botiax+Travel';">
+      </div>
+
+      <!-- NAVEGACIÓN -->
+      <nav class="hidden md:flex space-x-8 font-medium text-brandDark">
+        <a href="#inicio" class="hover:text-brandGold transition-colors">Inicio</a>
+        <a href="#experiencias" class="hover:text-brandGold transition-colors">Experiencias</a>
+        <a href="#faq" class="hover:text-brandGold transition-colors">Preguntas Frecuentes</a>
+        <a href="#contacto" class="hover:text-brandGold transition-colors">Contacto</a>
+      </nav>
+
+      <!-- BOTÓN CONTACTO -->
+      <a href="https://api.whatsapp.com/send?phone=5491165698921" target="_blank" class="bg-brandGold hover:bg-brandGoldHover text-brandDark font-semibold px-4 py-2 rounded-lg shadow-sm transition duration-200 flex items-center space-x-2 text-sm sm:text-base">
+        <i class="fab font-bold fa-whatsapp text-lg"></i>
+        <span>Atención 24/7</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION CON BUSCADOR COMPACTO -->
+  <section id="inicio" class="relative bg-gradient-to-b from-blue-100 via-sky-50 to-slate-50 py-8 px-4 sm:px-6 lg:px-8 border-b border-slate-200">
+    <div class="max-w-5xl mx-auto text-center">
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-brandDark tracking-tight mb-2">
+        Tu próximo destino, tu mejor historia.
+      </h1>
+      <p class="text-sm sm:text-base text-slate-600 mb-6 max-w-2xl mx-auto">
+        Diseñamos experiencias inolvidables alrededor del mundo. Encuentra el viaje perfecto para ti.
+      </p>
+
+      <!-- BUSCADOR COMPACTO -->
+      <div class="glass-card rounded-2xl shadow-lg border border-slate-200 p-4 max-w-4xl mx-auto text-left">
+        <!-- Pestañas -->
+        <div class="flex border-b border-slate-200 mb-4 space-x-2 sm:space-x-6 overflow-x-auto text-xs sm:text-sm font-semibold text-slate-600">
+          <button class="pb-2 border-b-2 border-brandGold text-brandDark flex items-center space-x-1 sm:space-x-2">
+            <i class="fas fa-plane-departure text-brandGold"></i> <span>Vuelos</span>
+          </button>
+          <button class="pb-2 border-b-2 border-transparent hover:border-slate-300 text-slate-500 hover:text-brandDark flex items-center space-x-1 sm:space-x-2">
+            <i class="fas fa-hotel text-brandGold"></i> <span>Alojamientos</span>
+          </button>
+          <button class="pb-2 border-b-2 border-transparent hover:border-slate-300 text-slate-500 hover:text-brandDark flex items-center space-x-1 sm:space-x-2">
+            <i class="fas fa-suitcase text-brandGold"></i> <span>Paquetes</span>
+          </button>
+          <button class="pb-2 border-b-2 border-transparent hover:border-slate-300 text-slate-500 hover:text-brandDark flex items-center space-x-1 sm:space-x-2">
+            <i class="fas fa-hiking text-brandGold"></i> <span>Actividades</span>
+          </button>
+        </div>
+
+        <!-- Campos de Búsqueda Simulados -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-sm">
+          <div>
+            <label class="block text-xs font-semibold text-slate-500 mb-1">Destino</label>
+            <div class="relative">
+              <i class="fas fa-map-marker-alt absolute left-3 top-3 text-slate-400"></i>
+              <input type="text" placeholder="¿A dónde quieres ir?" class="w-full pl-9 pr-3 py-2 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brandGold text-slate-700">
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-500 mb-1">Fecha de Ida</label>
+            <input type="date" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brandGold text-slate-700">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-500 mb-1">Pasajeros</label>
+            <select class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brandGold text-slate-700">
+              <option>1 Pasajero</option>
+              <option>2 Pasajeros</option>
+              <option>Familia / Grupo</option>
+            </select>
+          </div>
+          <div class="flex items-end">
+            <button class="w-full bg-brandDark hover:bg-slate-800 text-white font-semibold py-2 px-4 rounded-lg shadow transition flex items-center justify-center space-x-2">
+              <i class="fas fa-search text-brandGold"></i>
+              <span>Buscar</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARRUSEL DE EXPERIENCIAS DE DESTACADAS -->
+  <section id="experiencias" class="py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="flex items-center justify-between mb-6">
+      <div>
+        <h2 class="text-2xl font-bold text-brandDark">Descubre Experiencias Unicas</h2>
+        <p class="text-sm text-slate-500">Inspiración para tus próximas vacaciones</p>
+      </div>
+      <div class="flex space-x-2">
+        <button id="prevBtn" class="w-9 h-9 rounded-full border border-slate-300 bg-white hover:bg-slate-100 flex items-center justify-center text-slate-700 shadow-sm">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button id="nextBtn" class="w-9 h-9 rounded-full border border-slate-300 bg-white hover:bg-slate-100 flex items-center justify-center text-slate-700 shadow-sm">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Contenedor del Carrusel -->
+    <div id="carousel" class="carousel-container flex space-x-4 overflow-x-auto pb-4 scrollbar-hide">
+      <!-- Tarjeta 1 -->
+      <div class="carousel-item min-w-[260px] sm:min-w-[320px] max-w-[320px] bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden flex-shrink-0">
+        <div class="relative h-44">
+          <img src="playa.png" alt="Playas Paradisíacas" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500';">
+          <span class="absolute top-3 left-3 bg-brandGold text-brandDark text-xs font-bold px-2 py-1 rounded">Caribe & Playas</span>
+        </div>
+        <div class="p-4">
+          <h3 class="font-bold text-lg text-brandDark mb-1">Playas Paradisíacas</h3>
+          <p class="text-xs text-slate-600 mb-3">Descansa en las aguas cristalinas del Caribe con todo incluido.</p>
+          <div class="flex items-center justify-between pt-2 border-t border-slate-100">
+            <span class="text-xs font-semibold text-slate-500">Paquetes desde</span>
+            <span class="text-base font-extrabold text-brandDark">USD 890</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta 2 -->
+      <div class="carousel-item min-w-[260px] sm:min-w-[320px] max-w-[320px] bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden flex-shrink-0">
+        <div class="relative h-44">
+          <img src="hotel.png" alt="Hoteles de Lujo" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500';">
+          <span class="absolute top-3 left-3 bg-brandDark text-white text-xs font-bold px-2 py-1 rounded">Hospedaje Premium</span>
+        </div>
+        <div class="p-4">
+          <h3 class="font-bold text-lg text-brandDark mb-1">Hoteles de Ensueño</h3>
+          <p class="text-xs text-slate-600 mb-3">Resorts exclusivos con las mejores comodidades y ubicaciones.</p>
+          <div class="flex items-center justify-between pt-2 border-t border-slate-100">
+            <span class="text-xs font-semibold text-slate-500">Por noche desde</span>
+            <span class="text-base font-extrabold text-brandDark">USD 120</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta 3 -->
+      <div class="carousel-item min-w-[260px] sm:min-w-[320px] max-w-[320px] bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden flex-shrink-0">
+        <div class="relative h-44">
+          <img src="buceo.png" alt="Aventura & Buceo" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500';">
+          <span class="absolute top-3 left-3 bg-brandGold text-brandDark text-xs font-bold px-2 py-1 rounded">Aventura</span>
+        </div>
+        <div class="p-4">
+          <h3 class="font-bold text-lg text-brandDark mb-1">Buceo y Deportes</h3>
+          <p class="text-xs text-slate-600 mb-3">Explora barreras de coral y fondos marinos fascinantes.</p>
+          <div class="flex items-center justify-between pt-2 border-t border-slate-100">
+            <span class="text-xs font-semibold text-slate-500">Excursiones desde</span>
+            <span class="text-base font-extrabold text-brandDark">USD 75</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta 4 -->
+      <div class="carousel-item min-w-[260px] sm:min-w-[320px] max-w-[320px] bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden flex-shrink-0">
+        <div class="relative h-44">
+          <img src="experiencias.jpg" alt="Circuitos Culturales" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500';">
+          <span class="absolute top-3 left-3 bg-brandDark text-white text-xs font-bold px-2 py-1 rounded">Grupales</span>
+        </div>
+        <div class="p-4">
+          <h3 class="font-bold text-lg text-brandDark mb-1">Experiencias Culturales</h3>
+          <p class="text-xs text-slate-600 mb-3">Circuitos guiados por Europa, Turquía, Dubái y Sudamérica.</p>
+          <div class="flex items-center justify-between pt-2 border-t border-slate-100">
+            <span class="text-xs font-semibold text-slate-500">Circuitos desde</span>
+            <span class="text-base font-extrabold text-brandDark">USD 1,250</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DE PREGUNTAS FRECUENTES -->
+  <section id="faq" class="py-12 bg-white border-t border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-extrabold text-brandDark">Preguntas Frecuentes</h2>
+        <p class="text-slate-600 mt-2">Todo lo que necesitas saber antes de planificar tu viaje con Botiax Travel</p>
+      </div>
+
+      <!-- Acordeón FAQ -->
+      <div class="space-y-3" id="faqAccordion">
+
+        <!-- Pregunta 1 -->
+        <div class="border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
+          <button onclick="toggleFaq(1)" class="w-full text-left p-4 font-semibold text-brandDark flex justify-between items-center hover:bg-slate-100 transition">
+            <span>1. ¿Hay opciones para viajeros solos?</span>
+            <i id="faq-icon-1" class="fas fa-chevron-down text-brandGold transition-transform"></i>
+          </button>
+          <div id="faq-ans-1" class="hidden p-4 pt-0 text-slate-600 text-sm border-t border-slate-100 bg-white">
+            Sí, ofrecemos viajes grupales y paquetes diseñados para viajeros solos que quieran conocer gente nueva.
+          </div>
+        </div>
+
+        <!-- Pregunta 2 -->
+        <div class="border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
+          <button onclick="toggleFaq(2)" class="w-full text-left p-4 font-semibold text-brandDark flex justify-between items-center hover:bg-slate-100 transition">
+            <span>2. ¿Cómo puedo contactarlos durante mi viaje?</span>
+            <i id="faq-icon-2" class="fas fa-chevron-down text-brandGold transition-transform"></i>
+          </button>
+          <div id="faq-ans-2" class="hidden p-4 pt-0 text-slate-600 text-sm border-t border-slate-100 bg-white">
+            Puedes contactarnos por WhatsApp o correo electrónico 24/7. Estamos disponibles para ayudarte en cualquier momento.<br>
+            <strong>WhatsApp:</strong> <a href="https://api.whatsapp.com/send?phone=5491165698921" target="_blank" class="text-brandGold hover:underline">+549 11 6569 8921</a><br>
+            <strong>Correo:</strong> <a href="mailto:soporte@botiax.com" class="text-brandGold hover:underline">soporte@botiax.com</a>
+          </div>
+        </div>
+
+        <!-- Pregunta 3 -->
+        <div class="border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
+          <button onclick="toggleFaq(3)" class="w-full text-left p-4 font-semibold text-brandDark flex justify-between items-center hover:bg-slate-100 transition">
+            <span>3. ¿Es seguro viajar? ¿Qué pasa si tengo un problema durante el viaje?</span>
+            <i id="faq-icon-3" class="fas fa-chevron-down text-brandGold transition-transform"></i>
+          </button>
+          <div id="faq-ans-3" class="hidden p-4 pt-0 text-slate-600 text-sm border-t border-slate-100 bg-white">
+            No importa el destino que elijas, todos nuestros destinos son seguros. Te brindamos recomendaciones específicas para cada lugar y te asesoramos sobre precauciones adicionales. En Botiax Travel, te brindamos soporte 24/7 durante todo tu viaje. Puedes contactarnos en cualquier momento para resolver inconvenientes o recibir asistencia.
+          </div>
+        </div>
+
+        <!-- Pregunta 4 -->
+        <div class="border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
+          <button onclick="toggleFaq(4)" class="w-full text-left p-4 font-semibold text-brandDark flex justify-between items-center hover:bg-slate-100 transition">
+            <span>4. ¿Cuánto equipaje está permitido según la aerolínea?</span>
+            <i id="faq-icon-4" class="fas fa-chevron-down text-brandGold transition-transform"></i>
+          </button>
+          <div id="faq-ans-4" class="hidden p-4 pt-0 text-slate-600 text-sm border-t border-slate-100 bg-white">
+            <ul class="list-disc pl-5 space-y-1">
+              <li><strong>Equipaje de Mano:</strong> Varía según la aerolínea, pero generalmente permite una maleta de hasta 10 kg y una mochila pequeña.</li>
+              <li><strong>Equipaje Facturado:</strong> Depende de la clase y la aerolínea. Suele ser de 23 kg en clase económica y 32 kg en clase ejecutiva.</li>
+              <li><strong>Recomendación:</strong> Verifica las políticas de equipaje de tu aerolínea antes de viajar y la tarifa que compraste para saber qué tipo de valija compraste.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Pregunta 5 -->
+        <div class="border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
+          <button onclick="toggleFaq(5)" class="w-full text-left p-4 font-semibold text-brandDark flex justify-between items-center hover:bg-slate-100 transition">
+            <span>5. ¿Puedo personalizar mi itinerario?</span>
+            <i id="faq-icon-5" class="fas fa-chevron-down text-brandGold transition-transform"></i>
+          </button>
+          <div id="faq-ans-5" class="hidden p-4 pt-0 text-slate-600 text-sm border-t border-slate-100 bg-white">
+            ¡Claro! Ofrecemos opciones personalizadas para que agregues o quites actividades según tus preferencias.
+          </div>
+        </div>
+
+        <!-- Pregunta 6 -->
+        <div class="border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
+          <button onclick="toggleFaq(6)" class="w-full text-left p-4 font-semibold text-brandDark flex justify-between items-center hover:bg-slate-100 transition">
+            <span>6. ¿Qué documentos se necesitan para viajar?</span>
+            <i id="faq-icon-6" class="fas fa-chevron-down text-brandGold transition-transform"></i>
+          </button>
+          <div id="faq-ans-6" class="hidden p-4 pt-0 text-slate-600 text-sm border-t border-slate-100 bg-white">
+            <ul class="list-disc pl-5 space-y-1">
+              <li><strong>Pasaporte:</strong> Válido con al menos 6 meses de vigencia desde la fecha de regreso.</li>
+              <li><strong>Visa:</strong> Dependiendo del destino, puede ser requerida. Te asesoramos en el proceso.</li>
+              <li><strong>Vacunas:</strong> Algunos países exigen certificados de vacunación (ej: fiebre amarilla).</li>
+              <li><strong>Seguro de Viaje:</strong> Obligatorio en ciertos destinos. Te ayudamos a contratarlo.</li>
+              <li><strong>Otros:</strong> Tarjeta de embarque, reservas de hoteles y documentos adicionales según el destino.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Pregunta 7 -->
+        <div class="border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
+          <button onclick="toggleFaq(7)" class="w-full text-left p-4 font-semibold text-brandDark flex justify-between items-center hover:bg-slate-100 transition">
+            <span>7. ¿Qué productos y servicios ofrece Botiax Travel para viajeros?</span>
+            <i id="faq-icon-7" class="fas fa-chevron-down text-brandGold transition-transform"></i>
+          </button>
+          <div id="faq-ans-7" class="hidden p-4 pt-0 text-slate-600 text-sm border-t border-slate-100 bg-white">
+            Brindamos una amplia variedad de opciones para todo tipo de viajeros. Ofrecemos paquetes turísticos con itinerarios completos a destinos internacionales como Turquía, Dubai, Islas Griegas y nacionales como Ushuaia o Bariloche. También diseñamos viajes a medida según tus intereses, viajes grupales, excursiones, tours y cruceros.<br><br>
+            Además, gestionamos vuelos nacionales e internacionales, buses de larga distancia y viajes en barco.<br>
+            Te acompañamos desde la planificación hasta tu vuelta, para que cada viaje sea único.
+          </div>
+        </div>
+
+        <!-- Pregunta 8 -->
+        <div class="border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
+          <button onclick="toggleFaq(8)" class="w-full text-left p-4 font-semibold text-brandDark flex justify-between items-center hover:bg-slate-100 transition">
+            <span>8. ¿Quiénes somos? / ¿Qué es Botiax Travel?</span>
+            <i id="faq-icon-8" class="fas fa-chevron-down text-brandGold transition-transform"></i>
+          </button>
+          <div id="faq-ans-8" class="hidden p-4 pt-0 text-slate-600 text-sm border-t border-slate-100 bg-white">
+            Botiax Travel es una empresa pionera en la organización de salidas grupales que fortalecen las relaciones humanas. Con más de 15 años de experiencia, nacimos en Lomas del Mirador con el objetivo de ofrecer paquetes turísticos completos para que nuestros viajeros solo se preocupen por disfrutar al máximo. Nos destacamos por descubrir destinos fascinantes y únicos alrededor del mundo, diseñando paquetes personalizados que transforman la vida de las personas.<br><br>
+            Ya sea explorar paisajes impresionantes, sumergirse en culturas milenarias o vivir emocionantes aventuras, en Botiax Travel encontrarás la experiencia perfecta para ti. Creemos en el poder transformador de los viajes, creando momentos inolvidables que generan recuerdos duraderos. ¡Únete a la comunidad de #Botiax Travel y hagamos realidad tu próximo destino!<br><br>
+            <em>Viajemos juntos, compartamos risas, aventuras y experiencias que nos enriquecerán de por vida. ✈</em>
+          </div>
+        </div>
+
+        <!-- Pregunta 9 -->
+        <div class="border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
+          <button onclick="toggleFaq(9)" class="w-full text-left p-4 font-semibold text-brandDark flex justify-between items-center hover:bg-slate-100 transition">
+            <span>9. ¿Cuáles son nuestras redes sociales?</span>
+            <i id="faq-icon-9" class="fas fa-chevron-down text-brandGold transition-transform"></i>
+          </button>
+          <div id="faq-ans-9" class="hidden p-4 pt-0 text-slate-600 text-sm border-t border-slate-100 bg-white">
+            <ul class="space-y-1">
+              <li><strong>Instagram:</strong> <a href="https://www.instagram.com/botiax.ok" target="_blank" class="text-brandGold hover:underline">@botiax.ok</a></li>
+              <li><strong>Facebook:</strong> <a href="https://www.facebook.com/botiax.ok" target="_blank" class="text-brandGold hover:underline">/botiax.ok</a></li>
+              <li><strong>WhatsApp:</strong> <a href="https://api.whatsapp.com/send?phone=5491165698921" target="_blank" class="text-brandGold hover:underline">+549 11 6569 8921</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Pregunta 10 -->
+        <div class="border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
+          <button onclick="toggleFaq(10)" class="w-full text-left p-4 font-semibold text-brandDark flex justify-between items-center hover:bg-slate-100 transition">
+            <span>10. ¿Dónde estamos ubicados?</span>
+            <i id="faq-icon-10" class="fas fa-chevron-down text-brandGold transition-transform"></i>
+          </button>
+          <div id="faq-ans-10" class="hidden p-4 pt-0 text-slate-600 text-sm border-t border-slate-100 bg-white">
+            <strong>Dirección:</strong> Buenos Aires 412, Piso 11, Puerto Madero, BS AS.<br>
+            <strong>Horarios de atención:</strong> Lunes a viernes de 10 a 18 hs.
+          </div>
+        </div>
+
+        <!-- Pregunta 11 -->
+        <div class="border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
+          <button onclick="toggleFaq(11)" class="w-full text-left p-4 font-semibold text-brandDark flex justify-between items-center hover:bg-slate-100 transition">
+            <span>11. ¿Por qué elegir Botiax Travel?</span>
+            <i id="faq-icon-11" class="fas fa-chevron-down text-brandGold transition-transform"></i>
+          </button>
+          <div id="faq-ans-11" class="hidden p-4 pt-0 text-slate-600 text-sm border-t border-slate-100 bg-white">
+            <ul class="list-disc pl-5 space-y-1 mb-3">
+              <li><strong>Experiencia:</strong> Más de 15 años en el mercado, con miles de viajeros satisfechos.</li>
+              <li><strong>Personalización:</strong> Diseñamos cada viaje según tus necesidades y deseos.</li>
+              <li><strong>Calidad:</strong> Trabajamos con los mejores proveedores para garantizar una experiencia premium.</li>
+              <li><strong>Soporte:</strong> Atención personalizada antes, durante y después del viaje.</li>
+            </ul>
+            Brindamos experiencias Personalizadas, Atención al Cliente 24/7, Exclusividad en Paquetes, Transparencia y Confianza, Experiencias Memorables.<br><br>
+            Botiax Travel no es solo una agencia de viajes, es tu aliado para descubrir el mundo de una manera única, personalizada y memorable.<br>
+            <strong>¿Listo para vivir la experiencia Botiax Travel?</strong>
+          </div>
+        </div>
+
+        <!-- Pregunta 12 -->
+        <div class="border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
+          <button onclick="toggleFaq(12)" class="w-full text-left p-4 font-semibold text-brandDark flex justify-between items-center hover:bg-slate-100 transition">
+            <span>12. ¿Puedo viajar con niños?</span>
+            <i id="faq-icon-12" class="fas fa-chevron-down text-brandGold transition-transform"></i>
+          </button>
+          <div id="faq-ans-12" class="hidden p-4 pt-0 text-slate-600 text-sm border-t border-slate-100 bg-white">
+            Sí, ofrecemos paquetes familiares con actividades y alojamientos adecuados para niños. También te asesoramos sobre los requisitos de documentación para menores.
+          </div>
+        </div>
+
+        <!-- Pregunta 13 -->
+        <div class="border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
+          <button onclick="toggleFaq(13)" class="w-full text-left p-4 font-semibold text-brandDark flex justify-between items-center hover:bg-slate-100 transition">
+            <span>13. ¿Qué documentos necesito para viajar con menores?</span>
+            <i id="faq-icon-13" class="fas fa-chevron-down text-brandGold transition-transform"></i>
+          </button>
+          <div id="faq-ans-13" class="hidden p-4 pt-0 text-slate-600 text-sm border-t border-slate-100 bg-white">
+            Depende del destino, pero generalmente se requiere:
+            <ul class="list-disc pl-5 space-y-1 mt-1">
+              <li>Pasaporte válido del menor.</li>
+              <li>Autorización de viaje firmada por ambos padres (si viaja con un solo padre o un tercero).</li>
+              <li>Copia del DNI de los padres.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Pregunta 14 -->
+        <div class="border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
+          <button onclick="toggleFaq(14)" class="w-full text-left p-4 font-semibold text-brandDark flex justify-between items-center hover:bg-slate-100 transition">
+            <span>14. ¿Qué pasa si pierdo mi vuelo o mi equipaje?</span>
+            <i id="faq-icon-14" class="fas fa-chevron-down text-brandGold transition-transform"></i>
+          </button>
+          <div id="faq-ans-14" class="hidden p-4 pt-0 text-slate-600 text-sm border-t border-slate-100 bg-white">
+            Te brindamos asistencia inmediata para reprogramar vuelos o gestionar la búsqueda de equipaje. Además, recomendamos contratar un seguro de viaje que cubra estos imprevistos.
+          </div>
+        </div>
+
+        <!-- Pregunta 15 -->
+        <div class="border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
+          <button onclick="toggleFaq(15)" class="w-full text-left p-4 font-semibold text-brandDark flex justify-between items-center hover:bg-slate-100 transition">
+            <span>15. ¿Cómo elijo el paquete adecuado para mí?</span>
+            <i id="faq-icon-15" class="fas fa-chevron-down text-brandGold transition-transform"></i>
+          </button>
+          <div id="faq-ans-15" class="hidden p-4 pt-0 text-slate-600 text-sm border-t border-slate-100 bg-white">
+            Nuestros asesores están disponibles para guiarte en la elección del paquete que mejor se adapte a tus intereses, presupuesto y estilo de viaje.
+          </div>
+        </div>
+
+        <!-- Pregunta 16 -->
+        <div class="border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
+          <button onclick="toggleFaq(16)" class="w-full text-left p-4 font-semibold text-brandDark flex justify-between items-center hover:bg-slate-100 transition">
+            <span>16. ¿Cuáles son las formas de pago?</span>
+            <i id="faq-icon-16" class="fas fa-chevron-down text-brandGold transition-transform"></i>
+          </button>
+          <div id="faq-ans-16" class="hidden p-4 pt-0 text-slate-600 text-sm border-t border-slate-100 bg-white">
+            <ul class="list-disc pl-5 space-y-2">
+              <li><strong>Paquetes nacionales (dentro de Argentina):</strong> Efectivo, tarjetas de débito, transferencias y tarjetas de crédito. Además podés financiar tu viaje en 12 cuotas con Visa.</li>
+              <li><strong>Paquetes internacionales (fuera de Argentina):</strong> Pesos argentinos, dólares americanos, tarjeta de débito, transferencias o tarjetas de crédito en 1 pago.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contacto" class="bg-brandDark text-white pt-10 pb-6 border-t border-slate-800 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-sm">
+      <div>
+        <h4 class="text-brandGold font-bold text-lg mb-3">Botiax Travel</h4>
+        <p class="text-slate-300 mb-3">Tu aliado estratégico para descubrir el mundo con la máxima seguridad, confianza y asesoramiento personalizado.</p>
+        <p class="text-xs text-slate-400">Buenos Aires 412, Piso 11, Puerto Madero, BS AS</p>
+      </div>
+      <div>
+        <h4 class="text-brandGold font-bold text-lg mb-3">Contacto Directo</h4>
+        <p class="text-slate-300 mb-1"><i class="fab fa-whatsapp text-brandGold mr-2"></i> +549 11 6569 8921</p>
+        <p class="text-slate-300 mb-1"><i class="fas fa-envelope text-brandGold mr-2"></i> soporte@botiax.com</p>
+        <p class="text-slate-300"><i class="fas fa-clock text-brandGold mr-2"></i> Lunes a Viernes 10:00 a 18:00 hs</p>
+      </div>
+      <div>
+        <h4 class="text-brandGold font-bold text-lg mb-3">Síguenos</h4>
+        <div class="flex space-x-4">
+          <a href="https://www.instagram.com/botiax.ok" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-brandGold hover:text-brandDark transition"><i class="fab fa-instagram text-xl"></i></a>
+          <a href="https://www.facebook.com/botiax.ok" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-brandGold hover:text-brandDark transition"><i class="fab fa-facebook-f text-xl"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500 border-t border-slate-800 pt-4">
+      &copy; 2026 Botiax Travel. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <!-- BURBUJA FLOTANTE COMERCIAL DE INFORMACIÓN (ESQUINA INFERIOR IZQUIERDA) -->
+  <div class="fixed bottom-5 left-5 z-50">
+    <!-- Botón Burbuja -->
+    <button onclick="toggleInfoModal()" class="w-12 h-12 rounded-full bg-brandDark text-brandGold shadow-xl border-2 border-brandGold flex items-center justify-center hover:scale-110 transition duration-300 group">
+      <i class="fas fa-info text-xl group-hover:rotate-12 transition"></i>
+    </button>
+
+    <!-- Ventana Modal Flotante -->
+    <div id="infoModal" class="hidden absolute bottom-16 left-0 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-slate-200 p-5 text-slate-800 text-xs sm:text-sm animate-fade-in">
+      <div class="flex justify-between items-center pb-2 mb-3 border-b border-slate-100">
+        <h3 class="font-bold text-brandDark flex items-center text-sm">
+          <i class="fas fa-robot text-brandGold mr-2"></i> Prueba Demo Botiax Webchat
+        </h3>
+        <button onclick="toggleInfoModal()" class="text-slate-400 hover:text-slate-600 font-bold text-lg">&times;</button>
+      </div>
+
+      <p class="text-slate-600 mb-3 leading-relaxed">
+        Esta es una <strong>página web de prueba para Botiax</strong> enfocada en probar el funcionamiento de nuestro <strong>Webchat con Inteligencia Artificial</strong> para agencias de viajes.
+      </p>
+      <p class="text-slate-600 mb-4 leading-relaxed">
+        El modelo de IA puede adaptarse y personalizarse 100% con los flujos, procesos y productos específicos de tu empresa.
+      </p>
+
+      <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+        <p class="font-bold text-brandDark mb-2 text-xs uppercase tracking-wider">Sugerencias para hacerle al Bot:</p>
+        <ul class="space-y-1.5 text-xs text-slate-700">
+          <li onclick="copyQuestion(this)" class="p-1.5 bg-white rounded border border-slate-200 hover:border-brandGold cursor-pointer transition flex items-center justify-between">
+            <span>¿Dónde se encuentran?</span> <i class="far fa-copy text-slate-400"></i>
+          </li>
+          <li onclick="copyQuestion(this)" class="p-1.5 bg-white rounded border border-slate-200 hover:border-brandGold cursor-pointer transition flex items-center justify-between">
+            <span>¿Cuál es la mejor época para viajar a Miami?</span> <i class="far fa-copy text-slate-400"></i>
+          </li>
+          <li onclick="copyQuestion(this)" class="p-1.5 bg-white rounded border border-slate-200 hover:border-brandGold cursor-pointer transition flex items-center justify-between">
+            <span>¿Cuáles son las formas de pago?</span> <i class="far fa-copy text-slate-400"></i>
+          </li>
+          <li onclick="copyQuestion(this)" class="p-1.5 bg-white rounded border border-slate-200 hover:border-brandGold cursor-pointer transition flex items-center justify-between">
+            <span>Quiero armar un circuito en destino.</span> <i class="far fa-copy text-slate-400"></i>
+          </li>
+          <li onclick="copyQuestion(this)" class="p-1.5 bg-white rounded border border-slate-200 hover:border-brandGold cursor-pointer transition flex items-center justify-between">
+            <span>¿Qué paquetes tenés disponibles para enero 2027?</span> <i class="far fa-copy text-slate-400"></i>
+          </li>
+          <li onclick="copyQuestion(this)" class="p-1.5 bg-white rounded border border-slate-200 hover:border-brandGold cursor-pointer transition flex items-center justify-between">
+            <span>¿Hay asistencia en destino?</span> <i class="far fa-copy text-slate-400"></i>
+          </li>
+          <li onclick="copyQuestion(this)" class="p-1.5 bg-white rounded border border-slate-200 hover:border-brandGold cursor-pointer transition flex items-center justify-between">
+            <span>¿Me arman un viaje a medida?</span> <i class="far fa-copy text-slate-400"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT DEL WEBCHAT INTEGRADO -->
+  <script id='_1186_ws_chat' src='https://statics.botiax.com/cgc/webchat/production/widget.js' config='eyJjb25maWdJZCI6Ing2ZmZpLXpqZS04bm8tdiIsIndzVG9rZW4iOiJkTVFQeE4wZ2xkVVJzQUxTQWctdkZEVjJaR0V4d2txbjM1c3dlcDhDUkJJeXciLCJiYWNrU2VydmVyIjoiaHR0cHM6Ly9iYWNrZW5kLmNnYy5ib3RpYXguY29tIiwid3NTZXJ2ZXIiOiJ3c3M6Ly93cy5iYWNrZW5kLmNnYy5ib3RpYXguY29tL2NoYW5uZWxzIiwiZW5hYmxlUmVjYXB0Y2hhIjp0cnVlfQ=='></script>
+
+  <!-- LÓGICA JAVASCRIPT LOCAL -->
+  <script>
+    // Control del Modal Comercial
+    function toggleInfoModal() {
+      const modal = document.getElementById('infoModal');
+      modal.classList.toggle('hidden');
+    }
+
+    // Función para copiar sugerencias al portapapeles
+    function copyQuestion(element) {
+      const text = element.querySelector('span').innerText;
+      navigator.clipboard.writeText(text);
+      alert('Pregunta copiada al portapapeles: "' + text + '"');
+    }
+
+    // Control del Acordeón FAQ
+    function toggleFaq(num) {
+      const content = document.getElementById(`faq-ans-${num}`);
+      const icon = document.getElementById(`faq-icon-${num}`);
+      
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      } else {
+        content.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+      }
+    }
+
+    // Scroll Horizontal del Carrusel
+    const carousel = document.getElementById('carousel');
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      carousel.scrollBy({ left: 300, behavior: 'smooth' });
+    });
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      carousel.scrollBy({ left: -300, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
